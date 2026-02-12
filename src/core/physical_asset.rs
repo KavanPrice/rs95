@@ -5,6 +5,8 @@
 //! Each instance of the Physical Asset Class defines a classification of Physical Asset, such as a valve. Each class may have specific properties, such as percent open. These properties can be nested, in that a property can have its own properties. Each Physical Asset is associated with one Physical Asset Classes. This relationship is more like a type of, for example, a car would be a Porsche 911 Carrera S, and it could not also be any other model. If the Physical Asset is a car, then the Physical Asset Properties define the values for the colour of the car and maybe the option package associated with the car. The option package would have its own properties such as leather interior, sunroof, etc. Physical Assets can also be nested, in that they can contain other Physical Assets. For example, a Car would contain four tyres that have their own Physical Asset Class. The Physical Asset Capability Test Specification identifies a test that may be associated with determining the value for a property. The information obtained from running the test can be modelled in the Physical Asset Capability Test Result.
 //!
 //! The Modelling approach for ISA-95 results in multiple levels of Physical Assets. By definition, if a Physical Asset is defined by a Physical Asset Class, then it will have Physical Asset Properties that correspond to the Physical Asset Class Properties in the defining Physical Asset Class.
+//!
+//! ![ISA-95 physical asset model UML diagram](https://reference.opcfoundation.org/api/image/get/115/image009.jpg)
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]

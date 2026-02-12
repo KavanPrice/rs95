@@ -5,6 +5,8 @@
 //! Each instance of the Equipment Class defines a classification of equipment, such as a tank. Each Equipment Class may have specific properties, such as a volume. These properties can be nested, in that a property can have its own properties. Each piece of Equipment can be associated to one or more Equipment Classes. If the Equipment is a tank, then the Equipment Properties define the values for the volume of the tank. Equipment can also be nested, in that they can contain other Equipment. The tank may also include several sensors such as temperature. The modeller can choose between extra properties or next properties and nest equipment depending on their own criteria. The Equipment Capability Test Specification identifies a test that may be associated with determining the value for a property. The information obtained from running the test can be modelled in the Equipment Capability Test Result.
 //!
 //! The Modelling approach for ISA-95 results in multiple levels of Equipment and Equipment Classes. By definition, if Equipment is defined by an Equipment Class, then it will have Equipment Properties that correspond to the Equipment Class Properties in the defining Equipment Class.
+//!
+//! ![ISA-95 equipment model UML diagram](https://reference.opcfoundation.org/api/image/get/115/image008.png)
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]

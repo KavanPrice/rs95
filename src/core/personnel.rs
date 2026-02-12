@@ -3,6 +3,8 @@
 //! Reference: https://reference.opcfoundation.org/ISA-95/v100/docs/4.2.1
 //!
 //! Each instance of the Personnel Class from ANSI/ISA-95.00.02 is the Personnel object model. Each instance of the Personnel Class defines a role that a person can perform, such as a Draftsman. Each role may have specific properties, such as a Drafting Licence Number and a Licence Expiration Date. These Properties can also have their own nested properties. Each Person can be associated with one or more Personnel Class Roles. If the person is a Draftsman, then the Person Properties define the values for the Drafting Licence Number and Licence Expiration Date for that person. The Qualification Test Specification identifies a test that may be associated with determining the value for a property (such as a test for Draftsman used to obtain a Drafting Licence Number.) The information obtained from taking the test can be modelled in the Qualification Test Result.
+//!
+//! ![ISA-95 personnel model UML diagram](https://reference.opcfoundation.org/api/image/get/115/image007.png)
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]

@@ -11,6 +11,9 @@
 //! Each Material Sublot is an instance of a Material Definition that is uniquely identified. Material Sublots do not have properties since each sublot instance must have the same properties as the Material Lot it is part of. Material Sublots may also use the same assembly construct as used by Material Lots. Material Sublot instances are typically used to provide tracking resolution within Material Lots, for example a Material Lot may have been received from a vendor in ten barrels, each barrel may be identified as a separate Material Sublot in order to track its movements and environmental conditions during storage and production.
 //!
 //! The Material Test Specification identifies a test that may be associated with determining the value for a property of a Material Class, Material Definition or Material Lot instance. The information obtained from running the test can be modelled in the QA Test Result.
+//!
+//! ![ISA-95 material model UML diagram](https://reference.opcfoundation.org/api/image/get/115/image006.png)
+
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(

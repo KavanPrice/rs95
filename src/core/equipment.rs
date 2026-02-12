@@ -1,73 +1,79 @@
-use uuid::Uuid;
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-pub struct EquipmentClass {
-    pub id: Uuid,
+#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+pub struct EquipmentClass<ID> {
+    pub id: ID,
     pub name: String,
-    pub properties: Vec<EquipmentClassProperty>,
+    pub properties: Vec<EquipmentClassProperty<ID>>,
 }
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-pub struct EquipmentClassProperty {
-    pub id: Uuid,
+#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+pub struct EquipmentClassProperty<ID> {
+    pub id: ID,
     pub name: String,
-    pub nested_properties: Vec<EquipmentClassProperty>,
+    pub nested_properties: Vec<EquipmentClassProperty<ID>>,
 }
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-pub struct Equipment {
-    pub id: Uuid,
+#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+pub struct Equipment<ID> {
+    pub id: ID,
     pub name: String,
-    pub equipment_classes: Vec<Uuid>, // IDs of EquipmentClass
-    pub properties: Vec<EquipmentProperty>,
-    pub sub_equipment: Vec<Equipment>,
+    pub equipment_classes: Vec<ID>, // IDs of EquipmentClass
+    pub properties: Vec<EquipmentProperty<ID>>,
+    pub sub_equipment: Vec<Equipment<ID>>,
 }
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-pub struct EquipmentProperty {
-    pub id: Uuid,
+#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+pub struct EquipmentProperty<ID> {
+    pub id: ID,
     pub name: String,
-    pub maps_to_equipment_class_property_id: Option<Uuid>,
-    pub nested_properties: Vec<EquipmentProperty>,
+    pub maps_to_equipment_class_property_id: Option<ID>,
+    pub nested_properties: Vec<EquipmentProperty<ID>>,
 }
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-pub struct EquipmentCapabilityTestSpecification {
-    pub id: Uuid,
+#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+pub struct EquipmentCapabilityTestSpecification<ID> {
+    pub id: ID,
     pub name: String,
-    pub equipment_ids: Vec<Uuid>,
-    pub equipment_class_ids: Vec<Uuid>,
-    pub equipment_property_ids: Vec<Uuid>,
-    pub equipment_class_property_ids: Vec<Uuid>,
+    pub equipment_ids: Vec<ID>,
+    pub equipment_class_ids: Vec<ID>,
+    pub equipment_property_ids: Vec<ID>,
+    pub equipment_class_property_ids: Vec<ID>,
 }
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-pub struct EquipmentCapabilityTestResult {
-    pub id: Uuid,
-    pub equipment_capability_test_specification_id: Uuid,
-    pub equipment_property_ids: Vec<Uuid>,
+#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+pub struct EquipmentCapabilityTestResult<ID> {
+    pub id: ID,
+    pub equipment_capability_test_specification_id: ID,
+    pub equipment_property_ids: Vec<ID>,
 }
 
 #[cfg(test)]
 mod tests {
+    use uuid::Uuid;
     use super::*;
 
     #[test]
     fn test_equipment_model() {
         let ec_id = Uuid::new_v4();
-        let ec = EquipmentClass {
+        let ec = EquipmentClass::<Uuid> {
             id: ec_id,
             name: "Lathe".to_string(),
             properties: vec![],
         };
         let equipment_id = Uuid::new_v4();
-        let equipment = Equipment {
+        let equipment = Equipment::<Uuid> {
             id: equipment_id,
             name: "Lathe-01".to_string(),
             equipment_classes: vec![ec_id],

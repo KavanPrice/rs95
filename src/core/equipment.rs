@@ -1,7 +1,12 @@
-
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct EquipmentClass<ID> {
     pub id: ID,
     pub name: String,
@@ -10,7 +15,13 @@ pub struct EquipmentClass<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct EquipmentClassProperty<ID> {
     pub id: ID,
     pub name: String,
@@ -19,7 +30,13 @@ pub struct EquipmentClassProperty<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct Equipment<ID> {
     pub id: ID,
     pub name: String,
@@ -30,7 +47,13 @@ pub struct Equipment<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct EquipmentProperty<ID> {
     pub id: ID,
     pub name: String,
@@ -40,7 +63,13 @@ pub struct EquipmentProperty<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct EquipmentCapabilityTestSpecification<ID> {
     pub id: ID,
     pub name: String,
@@ -52,7 +81,13 @@ pub struct EquipmentCapabilityTestSpecification<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct EquipmentCapabilityTestResult<ID> {
     pub id: ID,
     pub equipment_capability_test_specification_id: ID,
@@ -61,8 +96,8 @@ pub struct EquipmentCapabilityTestResult<ID> {
 
 #[cfg(test)]
 mod tests {
-    use uuid::Uuid;
     use super::*;
+    use uuid::Uuid;
 
     #[test]
     fn test_equipment_model() {

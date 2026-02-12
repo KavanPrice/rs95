@@ -1,7 +1,12 @@
-
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct MaterialClass<ID> {
     pub id: ID,
     pub name: String,
@@ -11,7 +16,13 @@ pub struct MaterialClass<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct MaterialClassProperty<ID> {
     pub id: ID,
     pub name: String,
@@ -20,7 +31,13 @@ pub struct MaterialClassProperty<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct MaterialDefinition<ID> {
     pub id: ID,
     pub name: String,
@@ -31,7 +48,13 @@ pub struct MaterialDefinition<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct MaterialDefinitionProperty<ID> {
     pub id: ID,
     pub name: String,
@@ -41,7 +64,13 @@ pub struct MaterialDefinitionProperty<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct MaterialLot<ID> {
     pub id: ID,
     pub name: String,
@@ -52,7 +81,13 @@ pub struct MaterialLot<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct MaterialSublot<ID> {
     pub id: ID,
     pub name: String,
@@ -64,7 +99,13 @@ pub struct MaterialSublot<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct MaterialLotProperty<ID> {
     pub id: ID,
     pub name: String,
@@ -74,7 +115,13 @@ pub struct MaterialLotProperty<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct MaterialTestSpecification<ID> {
     pub id: ID,
     pub name: String,
@@ -88,7 +135,13 @@ pub struct MaterialTestSpecification<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct QATestResult<ID> {
     pub id: ID,
     pub name: String,
@@ -98,8 +151,8 @@ pub struct QATestResult<ID> {
 
 #[cfg(test)]
 mod tests {
-    use uuid::Uuid;
     use super::*;
+    use uuid::Uuid;
 
     #[test]
     fn test_material_model() {

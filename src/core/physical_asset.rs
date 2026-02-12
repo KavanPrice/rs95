@@ -1,7 +1,12 @@
-
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct PhysicalAssetClass<ID> {
     pub id: ID,
     pub name: String,
@@ -10,7 +15,13 @@ pub struct PhysicalAssetClass<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct PhysicalAssetClassProperty<ID> {
     pub id: ID,
     pub name: String,
@@ -19,7 +30,13 @@ pub struct PhysicalAssetClassProperty<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct PhysicalAsset<ID> {
     pub id: ID,
     pub name: String,
@@ -30,7 +47,13 @@ pub struct PhysicalAsset<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct PhysicalAssetProperty<ID> {
     pub id: ID,
     pub name: String,
@@ -40,7 +63,13 @@ pub struct PhysicalAssetProperty<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct PhysicalAssetCapabilityTestSpecification<ID> {
     pub id: ID,
     pub name: String,
@@ -52,7 +81,13 @@ pub struct PhysicalAssetCapabilityTestSpecification<ID> {
 
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(serialize = "ID: serde::Serialize", deserialize = "ID: serde::Deserialize<'de>")))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "ID: serde::Serialize",
+        deserialize = "ID: serde::Deserialize<'de>"
+    ))
+)]
 pub struct PhysicalAssetCapabilityTestResult<ID> {
     pub id: ID,
     pub physical_asset_capability_test_specification_id: ID,
@@ -61,8 +96,8 @@ pub struct PhysicalAssetCapabilityTestResult<ID> {
 
 #[cfg(test)]
 mod tests {
-    use uuid::Uuid;
     use super::*;
+    use uuid::Uuid;
 
     #[test]
     fn test_physical_asset_model() {

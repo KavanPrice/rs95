@@ -1,6 +1,7 @@
 use uuid::Uuid;
 
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct PersonnelClass {
     pub id: Uuid,
     pub name: String,
@@ -8,6 +9,7 @@ pub struct PersonnelClass {
 }
 
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct PersonnelClassProperty {
     pub id: Uuid,
     pub name: String,
@@ -15,6 +17,7 @@ pub struct PersonnelClassProperty {
 }
 
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Person {
     pub id: Uuid,
     pub name: String,
@@ -23,6 +26,7 @@ pub struct Person {
 }
 
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct PersonProperty {
     pub id: Uuid,
     pub name: String,
@@ -31,6 +35,7 @@ pub struct PersonProperty {
 }
 
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct QualificationTestSpecification {
     pub id: Uuid,
     pub name: String,
@@ -41,6 +46,7 @@ pub struct QualificationTestSpecification {
 }
 
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct QualificationTestResult {
     pub id: Uuid,
     pub qualification_test_specification_id: Uuid,

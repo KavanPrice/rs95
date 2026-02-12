@@ -1,6 +1,7 @@
 use uuid::Uuid;
 
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct MaterialClass {
     pub id: Uuid,
     pub name: String,
@@ -9,6 +10,7 @@ pub struct MaterialClass {
 }
 
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct MaterialClassProperty {
     pub id: Uuid,
     pub name: String,
@@ -16,6 +18,7 @@ pub struct MaterialClassProperty {
 }
 
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct MaterialDefinition {
     pub id: Uuid,
     pub name: String,
@@ -25,6 +28,7 @@ pub struct MaterialDefinition {
 }
 
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct MaterialDefinitionProperty {
     pub id: Uuid,
     pub name: String,
@@ -33,6 +37,7 @@ pub struct MaterialDefinitionProperty {
 }
 
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct MaterialLot {
     pub id: Uuid,
     pub name: String,
@@ -42,6 +47,7 @@ pub struct MaterialLot {
 }
 
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct MaterialSublot {
     pub id: Uuid,
     pub name: String,
@@ -52,6 +58,7 @@ pub struct MaterialSublot {
 }
 
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct MaterialLotProperty {
     pub id: Uuid,
     pub name: String,
@@ -60,6 +67,7 @@ pub struct MaterialLotProperty {
 }
 
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct MaterialTestSpecification {
     pub id: Uuid,
     pub name: String,
@@ -72,6 +80,7 @@ pub struct MaterialTestSpecification {
 }
 
 #[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct QATestResult {
     pub id: Uuid,
     pub name: String,

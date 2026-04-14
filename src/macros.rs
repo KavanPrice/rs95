@@ -293,6 +293,154 @@ macro_rules! declare_equipment_hierarchy_models {
 }
 
 #[macro_export]
+macro_rules! declare_process_segment_models {
+    ($id_type:ty) => {
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub enum ResourceUse {
+            Used,
+            Any,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub enum MaterialUse {
+            Consumed,
+            Produced,
+            ByProduct,
+            CoProduct,
+            Yield,
+            Sample,
+            Any,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub enum ProcessSegmentDependencyType {
+            AtStart,
+            AfterStart,
+            AfterEnd,
+            NotFollow,
+            PossibleParallel,
+            Parallel,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct EquipmentSegmentSpecificationProperty {
+            pub id: $id_type,
+            pub name: String,
+            pub nested_properties: Vec<EquipmentSegmentSpecificationProperty>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct EquipmentSegmentSpecification {
+            pub id: $id_type,
+            pub equipment_class_id: Option<$id_type>,
+            pub equipment_id: Option<$id_type>,
+            pub quantity: Option<String>,
+            pub unit: Option<String>,
+            pub use_type: ResourceUse,
+            pub properties: Vec<EquipmentSegmentSpecificationProperty>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct PersonnelSegmentSpecificationProperty {
+            pub id: $id_type,
+            pub name: String,
+            pub nested_properties: Vec<PersonnelSegmentSpecificationProperty>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct PersonnelSegmentSpecification {
+            pub id: $id_type,
+            pub personnel_class_id: Option<$id_type>,
+            pub person_id: Option<$id_type>,
+            pub quantity: Option<String>,
+            pub unit: Option<String>,
+            pub use_type: ResourceUse,
+            pub properties: Vec<PersonnelSegmentSpecificationProperty>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct MaterialSegmentSpecificationProperty {
+            pub id: $id_type,
+            pub name: String,
+            pub nested_properties: Vec<MaterialSegmentSpecificationProperty>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct MaterialSegmentSpecification {
+            pub id: $id_type,
+            pub material_class_id: Option<$id_type>,
+            pub material_definition_id: Option<$id_type>,
+            pub quantity: Option<String>,
+            pub unit: Option<String>,
+            pub use_type: MaterialUse,
+            pub properties: Vec<MaterialSegmentSpecificationProperty>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct PhysicalAssetSegmentSpecificationProperty {
+            pub id: $id_type,
+            pub name: String,
+            pub nested_properties: Vec<PhysicalAssetSegmentSpecificationProperty>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct PhysicalAssetSegmentSpecification {
+            pub id: $id_type,
+            pub physical_asset_class_id: Option<$id_type>,
+            pub physical_asset_id: Option<$id_type>,
+            pub quantity: Option<String>,
+            pub unit: Option<String>,
+            pub use_type: ResourceUse,
+            pub properties: Vec<PhysicalAssetSegmentSpecificationProperty>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct ProcessSegmentParameter {
+            pub id: $id_type,
+            pub name: String,
+            pub value: String,
+            pub unit: String,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct ProcessSegmentDependency {
+            pub id: $id_type,
+            pub dependency_type: ProcessSegmentDependencyType,
+            pub from_process_segment_id: $id_type,
+            pub to_process_segment_id: $id_type,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct ProcessSegment {
+            pub id: $id_type,
+            pub name: String,
+            pub duration: Option<String>,
+            pub equipment_segment_specifications: Vec<EquipmentSegmentSpecification>,
+            pub personnel_segment_specifications: Vec<PersonnelSegmentSpecification>,
+            pub material_segment_specifications: Vec<MaterialSegmentSpecification>,
+            pub physical_asset_segment_specifications: Vec<PhysicalAssetSegmentSpecification>,
+            pub parameters: Vec<ProcessSegmentParameter>,
+            pub sub_segments: Vec<ProcessSegment>,
+            pub dependencies: Vec<ProcessSegmentDependency>,
+        }
+    };
+}
+
+#[macro_export]
 macro_rules! declare_material_models {
     ($id_type:ty) => {
         #[derive(Debug, Clone, PartialEq)]

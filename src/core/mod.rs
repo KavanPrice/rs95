@@ -5,3 +5,4 @@ pub mod equipment_hierarchy;
 pub mod material;
 pub mod personnel;
 pub mod physical_asset;
+pub mod process_segment;

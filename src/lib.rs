@@ -19,6 +19,12 @@ pub mod default_models {
         declare_equipment_models!(uuid::Uuid);
     }
 
+    pub mod equipment_hierarchy {
+        //! A version of the Equipment Hierarchy models using UUIDs as identifiers.
+        //! You probably want to use these, unless you'd prefer to "bring your own identifier type."
+        declare_equipment_hierarchy_models!(uuid::Uuid);
+    }
+
     pub mod physical_asset {
         //! A version of the Physical Asset models using UUIDs as identifiers.
         //! You probably want to use these, unless you'd prefer to "bring your own identifier type."

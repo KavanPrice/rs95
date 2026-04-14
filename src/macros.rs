@@ -175,6 +175,124 @@ macro_rules! declare_physical_asset_models {
 }
 
 #[macro_export]
+macro_rules! declare_equipment_hierarchy_models {
+    ($id_type:ty) => {
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub enum WorkCenterType {
+            ProcessCell,
+            ProductionLine,
+            ProductionUnit,
+            StorageZone,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub enum WorkUnitType {
+            Unit,
+            WorkCell,
+            StorageUnit,
+            ProductionEquipment,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct EnterpriseProperty {
+            pub id: $id_type,
+            pub name: String,
+            pub nested_properties: Vec<EnterpriseProperty>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct Enterprise {
+            pub id: $id_type,
+            pub name: String,
+            pub properties: Vec<EnterpriseProperty>,
+            pub sites: Vec<Site>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct SiteProperty {
+            pub id: $id_type,
+            pub name: String,
+            pub nested_properties: Vec<SiteProperty>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct Site {
+            pub id: $id_type,
+            pub name: String,
+            pub properties: Vec<SiteProperty>,
+            pub areas: Vec<Area>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct AreaProperty {
+            pub id: $id_type,
+            pub name: String,
+            pub nested_properties: Vec<AreaProperty>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct Area {
+            pub id: $id_type,
+            pub name: String,
+            pub properties: Vec<AreaProperty>,
+            pub work_centers: Vec<WorkCenter>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct WorkCenterProperty {
+            pub id: $id_type,
+            pub name: String,
+            pub maps_to_equipment_class_property_id: Option<$id_type>,
+            pub nested_properties: Vec<WorkCenterProperty>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct WorkCenter {
+            pub id: $id_type,
+            pub name: String,
+            pub work_center_type: WorkCenterType,
+            pub equipment_classes: Vec<$id_type>, // IDs of EquipmentClass
+            pub properties: Vec<WorkCenterProperty>,
+            pub work_units: Vec<WorkUnit>,
+            pub equipment_capability_test_specification_ids: Vec<$id_type>,
+            pub equipment_capability_test_result_ids: Vec<$id_type>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct WorkUnitProperty {
+            pub id: $id_type,
+            pub name: String,
+            pub maps_to_equipment_class_property_id: Option<$id_type>,
+            pub nested_properties: Vec<WorkUnitProperty>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct WorkUnit {
+            pub id: $id_type,
+            pub name: String,
+            pub work_unit_type: WorkUnitType,
+            pub equipment_classes: Vec<$id_type>, // IDs of EquipmentClass
+            pub properties: Vec<WorkUnitProperty>,
+            pub equipment_ids: Vec<$id_type>, // IDs of Equipment
+            pub equipment_capability_test_specification_ids: Vec<$id_type>,
+            pub equipment_capability_test_result_ids: Vec<$id_type>,
+        }
+    };
+}
+
+#[macro_export]
 macro_rules! declare_material_models {
     ($id_type:ty) => {
         #[derive(Debug, Clone, PartialEq)]

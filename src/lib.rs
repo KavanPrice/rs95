@@ -25,10 +25,62 @@ pub mod default_models {
         declare_equipment_hierarchy_models!(uuid::Uuid);
     }
 
+    mod _process_segment_and_operations {
+        //! All process segment and operations types generated together so that
+        //! `OperationsSegment` shares the same segment specification types as `ProcessSegment`.
+        declare_process_segment_and_operations_models!(uuid::Uuid);
+    }
+
     pub mod process_segment {
-        //! A version of the Process Segment models using UUIDs as identifiers.
-        //! You probably want to use these, unless you'd prefer to "bring your own identifier type."
-        declare_process_segment_models!(uuid::Uuid);
+        //! Process segment models with UUID identifiers.
+        pub use super::_process_segment_and_operations::{
+            ResourceUse,
+            MaterialUse,
+            ProcessSegmentDependencyType,
+            EquipmentSegmentSpecificationProperty,
+            EquipmentSegmentSpecification,
+            PersonnelSegmentSpecificationProperty,
+            PersonnelSegmentSpecification,
+            MaterialSegmentSpecificationProperty,
+            MaterialSegmentSpecification,
+            PhysicalAssetSegmentSpecificationProperty,
+            PhysicalAssetSegmentSpecification,
+            ProcessSegmentParameter,
+            ProcessSegmentDependency,
+            ProcessSegment,
+        };
+    }
+
+    pub mod operations {
+        //! Operations models with UUID identifiers.
+        pub use super::_process_segment_and_operations::{
+            OperationType,
+            JobOrderCommandType,
+            JobOrderStatus,
+            OperationsResponseResult,
+            WorkMasterParameter,
+            WorkMaster,
+            OperationsDefinitionProperty,
+            OperationsSegmentParameter,
+            OperationsSegmentDependency,
+            OperationsSegment,
+            OperationsDefinition,
+            SegmentRequirementParameter,
+            SegmentRequirement,
+            OperationsRequestProperty,
+            OperationsRequest,
+            OperationsSchedule,
+            JobOrderParameter,
+            JobOrder,
+            JobResponseParameter,
+            JobResponse,
+            SegmentResponse,
+            OperationsResponse,
+            OperationsPerformance,
+            OperationsCapabilityProperty,
+            OperationsCapabilityElement,
+            OperationsCapability,
+        };
     }
 
     pub mod physical_asset {

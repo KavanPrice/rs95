@@ -83,6 +83,12 @@ pub mod default_models {
         };
     }
 
+    pub mod operational_location {
+        //! A version of the Operational Location models using UUIDs as identifiers.
+        //! You probably want to use these, unless you'd prefer to "bring your own identifier type."
+        declare_operational_location_models!(uuid::Uuid);
+    }
+
     pub mod physical_asset {
         //! A version of the Physical Asset models using UUIDs as identifiers.
         //! You probably want to use these, unless you'd prefer to "bring your own identifier type."

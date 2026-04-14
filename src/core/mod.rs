@@ -3,6 +3,7 @@
 pub mod equipment;
 pub mod equipment_hierarchy;
 pub mod material;
+pub mod operational_location;
 pub mod operations;
 pub mod personnel;
 pub mod physical_asset;

@@ -293,6 +293,50 @@ macro_rules! declare_equipment_hierarchy_models {
 }
 
 #[macro_export]
+macro_rules! declare_operational_location_models {
+    ($id_type:ty) => {
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct OperationalLocationClass {
+            pub id: $id_type,
+            pub name: String,
+            pub properties: Vec<OperationalLocationClassProperty>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct OperationalLocationClassProperty {
+            pub id: $id_type,
+            pub name: String,
+            pub nested_properties: Vec<OperationalLocationClassProperty>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct OperationalLocation {
+            pub id: $id_type,
+            pub name: String,
+            pub operational_location_classes: Vec<$id_type>,
+            pub properties: Vec<OperationalLocationProperty>,
+            pub sub_locations: Vec<OperationalLocation>,
+            pub equipment_ids: Vec<$id_type>,
+            pub personnel_ids: Vec<$id_type>,
+            pub physical_asset_ids: Vec<$id_type>,
+            pub material_lot_ids: Vec<$id_type>,
+        }
+
+        #[derive(Debug, Clone, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        pub struct OperationalLocationProperty {
+            pub id: $id_type,
+            pub name: String,
+            pub maps_to_operational_location_class_property_id: Option<$id_type>,
+            pub nested_properties: Vec<OperationalLocationProperty>,
+        }
+    };
+}
+
+#[macro_export]
 macro_rules! declare_material_models {
     ($id_type:ty) => {
         #[derive(Debug, Clone, PartialEq)]
